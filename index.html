@@ -3,28 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API Interaction Example</title>
+    <title>ChatGPT-like Interface</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>API Interaction Example</h1>
-        <button id="fetchData">Fetch Data</button>
-        <div id="response" class="response"></div>
+        <h1>Chat with AI</h1>
+        <div class="chat-window">
+            <div id="messages" class="messages"></div>
+            <input type="text" id="userInput" placeholder="Type your message here...">
+            <button id="sendButton">Send</button>
+        </div>
     </div>
-
-    <script>
-        document.getElementById('fetchData').addEventListener('click', function() {
-            fetch('https://joshweb.click/gptweb?prompt=hi')
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById('response').innerText = JSON.stringify(data);
-                })
-                .catch(error => {
-                    document.getElementById('response').innerText = 'Error fetching data';
-                    console.error('Error:', error);
-                });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
