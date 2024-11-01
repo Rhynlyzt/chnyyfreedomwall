@@ -8,8 +8,15 @@ document.getElementById('sendButton').addEventListener('click', async function()
     // Clear input field
     document.getElementById('userInput').value = '';
 
-    // Call AI API
-    const response = await fetch(`https://joshweb.click/gptweb?prompt=${encodeURIComponent(userInput)}`);
+    // Call the new AI API
+    const response = await fetch('https://appjonellccapis.zapto.org/api/gpt4o-v2', {
+        method: 'POST', // Assuming you need to send a POST request
+        headers: {
+            'Content-Type': 'application/json' // Specify content type as JSON
+        },
+        body: JSON.stringify({ prompt: userInput }) // Send the user input as JSON
+    });
+    
     const data = await response.json();
 
     // Display AI response
