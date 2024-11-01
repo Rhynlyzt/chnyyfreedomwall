@@ -1,58 +1,62 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
-}
-
-.container {
-    width: 80%;
-    margin: auto;
+    font-family: Arial, sans-serif;
+    background: url('https://www.transparenttextures.com/patterns/black-paper.png'), radial-gradient(circle, #1a1a1a, #000000);
+    color: white;
     overflow: hidden;
 }
 
-h1 {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.chat-window {
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100vh;
     padding: 20px;
-    margin-top: 20px;
 }
 
-.messages {
-    max-height: 400px;
+.chat-box {
+    flex: 1;
     overflow-y: auto;
-    margin-bottom: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
-.messages div {
-    margin: 5px 0;
+.input-area {
+    display: flex;
 }
 
-#userInput {
-    width: 75%;
+#user-input {
+    flex: 1;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-#sendButton {
-    padding: 10px;
-    background: #28a745;
-    color: white;
     border: none;
     border-radius: 5px;
+    margin-right: 10px;
+}
+
+#send-btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
     cursor: pointer;
 }
 
-#sendButton:hover {
-    background: #218838;
+#send-btn:hover {
+    background-color: #0056b3;
+}
+
+.message {
+    margin: 10px 0;
+}
+
+.user-message {
+    text-align: right;
+}
+
+.api-message {
+    text-align: left;
 }
