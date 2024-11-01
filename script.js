@@ -1,39 +1,29 @@
-const chatBox = document.getElementById('chat');
-const userInput = document.getElementById('userInput');
-const sendButton = document.getElementById('sendButton');
+document.getElementById('send-button').addEventListener('click', async () => {
+    const input = document.getElementById('user-input');
+    const message = input.value;
+    if (!message) return;
 
-sendButton.addEventListener('click', async () => {
-    const userText = userInput.value;
-    if (!userText) return;
+    // Display user message
+    appendMessage(`User: ${message}`);
+    input.value = '';
 
-    // Append user input to the chat
-    appendMessage('user', userText);
-    userInput.value = ''; // Clear input box
-
-    // Call the API
     try {
-        const response = await fetch('https://appjonellccapis.zapto.org/api/gpt4o-v2', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ message: userText })
-        });
-
+        // Call the API
+        const response = await fetch(`https://joshweb.click/new/gpt-3_5-turbo?prompt=${encodeURIComponent(message)}`);
         const data = await response.json();
-        const reply = data.response || 'No response from the API.';
 
-        // Append the response to the chat
-        appendMessage('response', reply);
+        // Display ChatGPT response
+        appendMessage(`ChatGPT: ${data}`);
     } catch (error) {
-        appendMessage('response', 'Error: ' + error.message);
+        console.error('Error:', error);
+        appendMessage('ChatGPT: Sorry, something went wrong.');
     }
 });
 
-function appendMessage(type, text) {
+function appendMessage(msg) {
+    const messagesDiv = document.getElementById('messages');
     const messageDiv = document.createElement('div');
-    messageDiv.classList.add(type);
-    messageDiv.textContent = text;
-    chatBox.appendChild(messageDiv);
-    chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the bottom
+    messageDiv.textContent = msg;
+    messagesDiv.appendChild(messageDiv);
+    messagesDiv.scrollTop = messagesDiv.scrollHeight; // Scroll to the bottom
 }
