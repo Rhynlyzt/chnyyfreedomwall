@@ -8,8 +8,20 @@ document.getElementById('send-button').addEventListener('click', async () => {
     input.value = '';
 
     try {
-        // Call the API
-        const response = await fetch(`https://joshweb.click/new/gpt-3_5-turbo?prompt=${encodeURIComponent(message)}`);
+        // Call the API using POST method
+        const response = await fetch('https://joshweb.click/new/gpt-3_5-turbo', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ prompt: message })
+        });
+
+        // Check if response is okay (status code 200)
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
         const data = await response.json();
 
         // Display ChatGPT response
