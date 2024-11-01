@@ -1,38 +1,39 @@
-const chatBox = document.getElementById('chat-box');
-const userInput = document.getElementById('user-input');
-const sendBtn = document.getElementById('send-btn');
+const chatBox = document.getElementById('chat');
+const userInput = document.getElementById('userInput');
+const sendButton = document.getElementById('sendButton');
 
-sendBtn.addEventListener('click', sendMessage);
+sendButton.addEventListener('click', async () => {
+    const userText = userInput.value;
+    if (!userText) return;
 
-async function sendMessage() {
-    const userMessage = userInput.value.trim();
-    if (userMessage === '') return;
+    // Append user input to the chat
+    appendMessage('user', userText);
+    userInput.value = ''; // Clear input box
 
-    appendMessage(userMessage, 'user-message');
-    userInput.value = '';
-
+    // Call the API
     try {
         const response = await fetch('https://appjonellccapis.zapto.org/api/gpt4o-v2', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ prompt: userMessage }) // Adjust based on API requirements
+            body: JSON.stringify({ message: userText })
         });
 
         const data = await response.json();
-        const botMessage = data.reply; // Change this based on the actual API response structure
-        appendMessage(botMessage, 'api-message');
-    } catch (error) {
-        console.error('Error:', error);
-        appendMessage("Sorry, there was an error processing your request.", 'api-message');
-    }
-}
+        const reply = data.response || 'No response from the API.';
 
-function appendMessage(message, className) {
+        // Append the response to the chat
+        appendMessage('response', reply);
+    } catch (error) {
+        appendMessage('response', 'Error: ' + error.message);
+    }
+});
+
+function appendMessage(type, text) {
     const messageDiv = document.createElement('div');
-    messageDiv.className = `message ${className}`;
-    messageDiv.textContent = message;
+    messageDiv.classList.add(type);
+    messageDiv.textContent = text;
     chatBox.appendChild(messageDiv);
     chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the bottom
 }
