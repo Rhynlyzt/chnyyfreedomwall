@@ -1,34 +1,38 @@
-document.getElementById('sendButton').addEventListener('click', async function() {
-    const userInput = document.getElementById('userInput').value;
-    if (!userInput) return;
+const chatBox = document.getElementById('chat-box');
+const userInput = document.getElementById('user-input');
+const sendBtn = document.getElementById('send-btn');
 
-    // Display user message
-    displayMessage('User: ' + userInput);
+sendBtn.addEventListener('click', sendMessage);
 
-    // Clear input field
-    document.getElementById('userInput').value = '';
+async function sendMessage() {
+    const userMessage = userInput.value.trim();
+    if (userMessage === '') return;
 
-    // Call the new AI API
-    const response = await fetch('https://appjonellccapis.zapto.org/api/gpt4o-v2', {
-        method: 'POST', // Assuming you need to send a POST request
-        headers: {
-            'Content-Type': 'application/json' // Specify content type as JSON
-        },
-        body: JSON.stringify({ prompt: userInput }) // Send the user input as JSON
-    });
-    
-    const data = await response.json();
+    appendMessage(userMessage, 'user-message');
+    userInput.value = '';
 
-    // Display AI response
-    displayMessage('AI: ' + data.response);
-});
+    try {
+        const response = await fetch('https://appjonellccapis.zapto.org/api/gpt4o-v2', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ prompt: userMessage }) // Adjust based on API requirements
+        });
 
-function displayMessage(message) {
-    const messagesContainer = document.getElementById('messages');
-    const messageElement = document.createElement('div');
-    messageElement.textContent = message;
-    messagesContainer.appendChild(messageElement);
+        const data = await response.json();
+        const botMessage = data.reply; // Change this based on the actual API response structure
+        appendMessage(botMessage, 'api-message');
+    } catch (error) {
+        console.error('Error:', error);
+        appendMessage("Sorry, there was an error processing your request.", 'api-message');
+    }
+}
 
-    // Scroll to the bottom
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+function appendMessage(message, className) {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `message ${className}`;
+    messageDiv.textContent = message;
+    chatBox.appendChild(messageDiv);
+    chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the bottom
 }
