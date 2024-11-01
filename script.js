@@ -8,14 +8,8 @@ document.getElementById('send-button').addEventListener('click', async () => {
     input.value = '';
 
     try {
-        // Call the API using POST method
-        const response = await fetch('https://joshweb.click/new/gpt-3_5-turbo', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ prompt: message })
-        });
+        // Call the new API using GET method
+        const response = await fetch(`https://joshweb.click/gpt4?prompt=${encodeURIComponent(message)}&uid=100`);
 
         // Check if response is okay (status code 200)
         if (!response.ok) {
