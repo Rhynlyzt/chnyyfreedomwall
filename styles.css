@@ -2,45 +2,141 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
 }
 
 body {
+    font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: #282c34;
-    color: #ffffff;
+    color: white;
+    background: black;
+    position: relative;
+    overflow: hidden;
 }
 
-.container {
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.background-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile {
     text-align: center;
+    z-index: 1;
+    position: relative;
 }
 
 .profile-pic {
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    border: 4px solid #fff;
+    border: 4px solid red;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2.5rem;
     margin-bottom: 10px;
 }
 
-.rainbow-text {
-    background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: 1.2em;
+p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+#time {
+    font-size: 1.5rem;
     font-weight: bold;
-    animation: rainbow 5s infinite linear;
 }
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('https://i.imgur.com/fafM5NI.gif'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed:
+    color: #333;
+    padding: 24px;
+  }
+      .profile {
+            background-image: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
 
-@keyframes rainbow {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 100% 50%; }
-}
+        /* CSS Animation để tạo hiệu ứng chữ màu động */
+        @keyframes rainbow {
+            0% {
+                color: violet;
+            }
+            14% {
+                color: indigo;
+            }
+            28% {
+                color: blue;
+            }
+            42% {
+                color: green;
+            }
+            50% {
+                color: pink;
+            }
+            56% {
+                color: yellow;
+            }
+            60% {
+                color: lime;
+            }
+            70% {
+                color: orange;
+            }
+            84% {
+                color: red;
+            }
+            100% {
+                color: violet;
+            }
+        }
 
-.info h2, .info p {
-    margin-top: 10px;
-    font-size: 1em;
-}
+        /* Áp dụng Animation cho chữ */
+        .profile {
+            animation: rainbow 4s linear infinite;
+        }
+        .footer {
+      text-align: center;
+      background-color;
+      color: deepskyblue;
+      padding: 1px;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      font-size: 11px;
+        }
+          .profile {
+          text-align: center;
+          z-index: 1;
+          border-radius: 10px;
+          padding: 18px;
+          border: var(--onyx);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          max-width: 400px;
+          margin-top: 30px;
+          width: 100%;
+          background-color:;
+          }
