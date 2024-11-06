@@ -140,3 +140,19 @@ body {
           width: 100%;
           background-color:;
           }
+.social-icons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.icon {
+    color: white;
+    font-size: 1.8rem;
+    transition: color 0.3s;
+}
+
+.icon:hover {
+    color: red;
+}
