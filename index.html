@@ -5,42 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🔴 It's all about if what lesson learned.</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- Favicon Icon -->
     <link rel="icon" href="https://i.imgur.com/k7pKRkK.jpeg" type="image/jpeg">
-    <!-- Font Awesome for Social Media Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-<!-- Background Music -->
     <audio autoplay loop>
         <source src="https://i.imgur.com/2FzpqCm.mp4" type="audio/mp4">
         Your browser does not support the audio element.
     </audio>
     <div class="profile">
         <img src="https://i.imgur.com/k7pKRkK.jpeg" alt="Profile Picture" class="profile-pic">
-        <h1>I'm C H R I S T I A N N </h1>
+        <h1>I'm C H R I S T I A N N</h1>
         <p>☕Coffee & Guitar🎸</p>
         <h3>Current Time (Asia/Manila):</h3>
         <div id="time"></div>
 
-        <!-- Social Media Icons -->
         <div class="social-icons">
             <a href="https://github.com" target="_blank" class="icon"><i class="fab fa-github"></i></a>
             <a href="https://facebook.com" target="_blank" class="icon"><i class="fab fa-facebook"></i></a>
             <a href="https://youtube.com" target="_blank" class="icon"><i class="fab fa-youtube"></i></a>
             <a href="https://instagram.com" target="_blank" class="icon"><i class="fab fa-instagram"></i></a>
-            <a href="https://tiktok.com" target="_blank" class="icon"><i class="fab fa-tiktok"></i></a> </div>
-              <p>ۦۦ</p>
-              <p>ۦۦ </p>
-  <p>ۦۦ</p>
-              <p>ۦۦ </p>
-  <p>ۦۦ</p>
-              <p>ۦۦ </p>
-              <p>©Copy right. Alright reserve 2024.</p>
-            
+            <a href="https://tiktok.com" target="_blank" class="icon"><i class="fab fa-tiktok"></i></a>
+        </div>
+        
+        <!-- Bible Verse Section -->
+        <button onclick="fetchBibleVerse()" class="fetch-button">Random Bible Verse</button>
+        <div id="bibleVerse" class="fetch-content" style="display: none;">
+            <span class="close-btn" onclick="closeContent('bibleVerse')">&times;</span>
+            <p id="bibleText"></p>
+        </div>
+        
+        <!-- Riddle Section -->
+        <button onclick="fetchRiddle()" class="fetch-button">Random Riddle</button>
+        <div id="riddle" class="fetch-content" style="display: none;">
+            <span class="close-btn" onclick="closeContent('riddle')">&times;</span>
+            <p id="riddleText"></p>
         </div>
     </div>
-    
+
     <script src="script.js"></script>
 </body>
 </html>
