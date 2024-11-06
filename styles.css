@@ -12,23 +12,7 @@ body {
     height: 100vh;
     color: white;
     background: black;
-    position: relative;
     overflow: hidden;
-}
-
-.background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-}
-
-.background-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
 }
 
 .profile {
@@ -63,6 +47,78 @@ h3 {
 #time {
     font-size: 1.5rem;
     font-weight: bold;
+}
+
+/* Galaxy Effect Button Style */
+.fetch-button {
+    margin: 10px;
+    padding: 12px 25px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s;
+    font-weight: bold;
+}
+
+.fetch-button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, #ff0080, #ff8c00, #40e0d0, #ff0080);
+    background-size: 400%;
+    animation: galaxy 8s linear infinite;
+    transition: opacity 0.3s;
+    z-index: -1;
+    border-radius: 5px;
+}
+
+.fetch-button:hover {
+    transform: scale(1.05);
+}
+
+.fetch-button:hover::before {
+    opacity: 0.8;
+}
+
+@keyframes galaxy {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Styling for the response boxes */
+.fetch-content {
+    position: relative;
+    margin-top: 15px;
+    padding: 20px;
+    font-size: 1.2rem;
+    color: #333;
+    font-weight: bold;
+    background-color: #f0e68c;
+    border: 2px solid #ffd700;
+    border-radius: 10px;
+    max-width: 80%;
+    margin: 15px auto;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Close Button Style */
+.close-btn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 1.2rem;
+    color: #333;
+    cursor: pointer;
 }
 body {
     font-family: Arial, sans-serif;
