@@ -285,3 +285,20 @@ body {
 .icon:hover {
     color: red;
 }
+.battery-container {
+    display: flex;
+    align-items: center;
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
+.battery-icon {
+    margin-right: 8px;
+    color: #4CAF50; /* Default color for full battery */
+    transition: color 0.3s;
+}
+
+#batteryPercentage {
+    font-weight: bold;
+}
+
