@@ -200,73 +200,50 @@ body {
     color: #333;
     padding: 24px;
   }
-      .profile {
-            background-image: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
-            -webkit-background-clip: text;
-            color: transparent;
-        }
+     /* Galactic background animation */
+@keyframes galacticBackground {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 1000px 1000px;
+    }
+}
 
-        /* CSS Animation để tạo hiệu ứng chữ màu động */
-        @keyframes rainbow {
-            0% {
-                color: violet;
-            }
-            14% {
-                color: indigo;
-            }
-            28% {
-                color: blue;
-            }
-            42% {
-                color: green;
-            }
-            50% {
-                color: pink;
-            }
-            56% {
-                color: yellow;
-            }
-            60% {
-                color: lime;
-            }
-            70% {
-                color: orange;
-            }
-            84% {
-                color: red;
-            }
-            100% {
-                color: violet;
-            }
-        }
+.profile {
+    position: relative;
+    color: transparent;
+    background: radial-gradient(circle, #1a2a6c, #b21f1f, #fdbb2d);
+    background-size: 200% 200%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    animation: galacticBackground 10s linear infinite;
+    animation: rainbow 4s linear infinite;
+    font-size: 2rem;
+    text-align: center;
+    z-index: 1;
+    border-radius: 10px;
+    padding: 18px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 30px auto;
+    width: 100%;
+}
 
-        /* Áp dụng Animation cho chữ */
-        .profile {
-            animation: rainbow 4s linear infinite;
-        }
-        .footer {
-      text-align: center;
-      background-color;
-      color: deepskyblue;
-      padding: 1px;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      font-size: 11px;
-        }
-          .profile {
-          text-align: center;
-          z-index: 1;
-          border-radius: 10px;
-          padding: 18px;
-          border: var(--onyx);
-          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-          max-width: 400px;
-          margin-top: 30px;
-          width: 100%;
-          background-color:
-          {
+/* Footer styling */
+.footer {
+    text-align: center;
+    background-color: #0a0a0a;
+    color: deepskyblue;
+    padding: 1px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    font-size: 11px;
+}
+
+/* Social icons styling */
 .social-icons {
     margin-top: 20px;
     display: flex;
