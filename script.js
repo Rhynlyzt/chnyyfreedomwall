@@ -32,3 +32,34 @@ function fetchRiddle() {
 function closeContent(id) {
     document.getElementById(id).style.display = 'none';
 }
+document.addEventListener("DOMContentLoaded", () => {
+    if (navigator.getBattery) {
+        navigator.getBattery().then(battery => {
+            function updateBatteryStatus() {
+                const batteryPercentage = Math.floor(battery.level * 100);
+                document.getElementById("batteryPercentage").textContent = `${batteryPercentage}%`;
+
+                const batteryIcon = document.querySelector(".battery-icon");
+                if (batteryPercentage >= 75) {
+                    batteryIcon.className = "fas fa-battery-full battery-icon";
+                    batteryIcon.style.color = "#4CAF50";
+                } else if (batteryPercentage >= 50) {
+                    batteryIcon.className = "fas fa-battery-three-quarters battery-icon";
+                    batteryIcon.style.color = "#FFEB3B";
+                } else if (batteryPercentage >= 25) {
+                    batteryIcon.className = "fas fa-battery-half battery-icon";
+                    batteryIcon.style.color = "#FFC107";
+                } else {
+                    batteryIcon.className = "fas fa-battery-quarter battery-icon";
+                    batteryIcon.style.color = "#F44336";
+                }
+            }
+
+            updateBatteryStatus();
+            battery.addEventListener("levelchange", updateBatteryStatus);
+            battery.addEventListener("chargingchange", updateBatteryStatus);
+        });
+    } else {
+        document.getElementById("batteryPercentage").textContent = "Battery API not supported";
+    }
+});
