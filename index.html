@@ -16,15 +16,28 @@
     <div class="profile">
         <img src="https://i.imgur.com/k7pKRkK.jpeg" alt="Profile Picture" class="profile-pic">
         <h1>I'm C H R I S T I A N N</h1>
-        <p>☕Coffee & Guitar🎸</p>
-        <h3>Current Time in Burauen Leyte, Philippines:</h3>
-        <div id="time"></div>
-        <h3>Battery Status:</h3>
-<div class="battery-container">
-    <i class="fas fa-battery-half battery-icon"></i>
-    <span id="batteryPercentage">Loading...</span>
-</div>
+        <!-- Timezone with globe icon -->
+        <div id="timezone">
+            <i class="fas fa-globe"></i> <span>Timezone: GMT+3</span>
+        </div>
 
+        <!-- Time with clock icon -->
+        <div id="time">
+            <i class="fas fa-clock"></i> <span id="timeDisplay">Loading...</span>
+        </div>
+
+        <!-- Bio with user icon -->
+        <div id="bio">
+            <i class="fas fa-user"></i> <span>: One World One Dream🤍</span>
+        </div>
+
+        <!-- Ping with signal icon -->
+        <div id="ping">
+            <i class="fas fa-signal"></i> <span>: 50ms</span>
+        </div>
+
+        <i class="fas fa-battery-half battery-icon"> :</i>
+        <span id="batteryPercentage">Checking your battery....</span>
 
         <div class="social-icons">
             <a href="https://github.com" target="_blank" class="icon"><i class="fab fa-github"></i></a>
@@ -33,14 +46,14 @@
             <a href="https://instagram.com" target="_blank" class="icon"><i class="fab fa-instagram"></i></a>
             <a href="https://tiktok.com" target="_blank" class="icon"><i class="fab fa-tiktok"></i></a>
         </div>
-        
+
         <!-- Bible Verse Section -->
         <button onclick="fetchBibleVerse()" class="fetch-button">Random Bible Verse</button>
         <div id="bibleVerse" class="fetch-content" style="display: none;">
             <span class="close-btn" onclick="closeContent('bibleVerse')">&times;</span>
             <p id="bibleText"></p>
         </div>
-        
+
         <!-- Riddle Section -->
         <button onclick="fetchRiddle()" class="fetch-button">Random Riddle</button>
         <div id="riddle" class="fetch-content" style="display: none;">
